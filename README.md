@@ -28,10 +28,11 @@ Using the default template, the JSON would look like this:
 	"datePaid": "9/10/2024",
 	"paymentMethod": "Visa",
 	"amount": "99",
+    "details":"These are the purcase details",
     "rows" :[
-        { "id": "1", "name": "Rohi", "age": "35" },
-        { "id": "2", "name": "Sachin", "age": "45" },
-        { "id": "3", "name": "Dhoni", "age": "40" }
+        { "id": "1", "name": "Bat", "count": "2" },
+        { "id": "2", "name": "Ball", "count": "6" },
+        { "id": "3", "name": "Pads", "count": "4" }
     ]
 }
 ```
