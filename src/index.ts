@@ -1,5 +1,5 @@
 import express from "express";
-import {renderHtml, renderPDF} from "./reactpdfhtml";
+import {renderHtml, renderPDF} from "./sample";
 import {renderStaticHtml, renderStaticPDF} from "./reactpdfhtmlstatic";
 
 
