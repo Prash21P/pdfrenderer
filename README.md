@@ -19,7 +19,8 @@ PSOT request takes below JSON
 
 Using the default template, the JSON would look like this:
 
-```{
+```
+{
 	"companyName": "Google",
 	"companyPhone": "999-999-12345",
 	"companyEmail": "test@dummy.com",
