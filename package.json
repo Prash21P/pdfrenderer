@@ -1,0 +1,29 @@
+{
+  "name": "pdfrenderer",
+  "version": "1.0.0",
+  "description": "Render PDF using react-pdf, react-pdf-html and react-dom-server",
+  "main": "index.ts",
+  "scripts": {
+    "serve": "nodemon src/index.ts",
+    "build": "tsc --build",
+    "serve:build": "node build/index.js"
+  },
+  "author": "Export SDK",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^17.0.2",
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
+  },
+  "dependencies": {
+    "@react-pdf/renderer": "^2.0.21",
+    "express": "^4.17.2",
+    "react": "^17.0.2",
+    "react-dom": "^18.2.0",
+    "react-dom-server": "0.0.5",
+    "react-pdf": "^7.7.0",
+    "react-pdf-html": "^1.2.0"
+  }
+}
