@@ -11,7 +11,7 @@ const port = 3000;
  * Renders dynamic HTML
  */
 app.post("/renderhtml", (req, res) => {
-    const result = renderHtml(req.body);
+    const result = renderHtml(req.body, req.get('templateName'));
     res.send(result);
 });
 
@@ -19,7 +19,7 @@ app.post("/renderhtml", (req, res) => {
  * Renders dynamic PDF
  */
 app.post("/renderpdf", async (req, res) => {
-    const result = await renderPDF(req.body);
+    const result = await renderPDF(req.body,  req.get('templateName'));
 
     // Setting up the response headers
     res.setHeader("Content-Type", "application/pdf");
