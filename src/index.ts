@@ -23,7 +23,7 @@ app.post("/renderpdf", async (req, res) => {
 
     // Setting up the response headers
     res.setHeader("Content-Type", "application/pdf");
-    res.setHeader("Content-Disposition", `attachment; filename=export.pdf`);
+    //res.setHeader("Content-Disposition", `attachment; filename=export.pdf`);
 
     // Streaming our resulting pdf back to the user
     result.pipe(res);
@@ -45,7 +45,7 @@ app.get("/renderpdf", async (req, res) => {
 
     // Setting up the response headers
     res.setHeader("Content-Type", "application/pdf");
-    res.setHeader("Content-Disposition", `attachment; filename=export.pdf`);
+    //res.setHeader("Content-Disposition", `attachment; filename=export.pdf`);
 
     // Streaming our resulting pdf back to the user
     result.pipe(res);
