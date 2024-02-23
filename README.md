@@ -38,7 +38,11 @@ Using the default template, the JSON would look like this:
 ```
 
 There are 4 request TWO POST and TWO GET to return HTML  PDF
-	- GET http://localhost:3000/renderhtml
-	- POST http://localhost:3000/renderhtml
+	- GET http://localhost:3090/renderhtml?templateName=patient&locale=de
+	- POST http://localhost:3090/renderhtml?templateName=patient&locale=de
 	- GET http://localhost:3000/renderpdf
-	- POST http://localhost:3000/renderpdf
+	- POST http://localhost:3090/renderpdf?templateName=patient&locale=de
+
+Use locales:
+locale=de for German
+locale=en for English
