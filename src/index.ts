@@ -14,8 +14,10 @@ const port = 3090;
  * Renders dynamic HTML
  */
 app.post("/renderhtml", (req, res) => {
-    let templatename = req.query.templateName.toString();
-    const result = renderHtml(req.body,templatename);
+    let templatename = req.query.templateName as String;
+    let lang = req.query.locale as String;
+    if(lang == null || lang == 'undefined') lang = 'en';
+    const result = renderHtml(req.body,templatename, lang);
     res.send(result);
 });
 
@@ -24,7 +26,10 @@ app.post("/renderhtml", (req, res) => {
  */
 app.post("/renderpdf", async (req, res) => {
 
-    const result = await renderPDF(req.body,  'patient');
+    let templatename = req.query.templateName as String;
+    let lang = req.query.locale as String;
+    if(lang == null || lang == 'undefined') lang = 'en';
+    const result = await renderPDF(req.body,  templatename, lang);
 
     // Setting up the response headers
     res.setHeader("Content-Type", "application/pdf");

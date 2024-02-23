@@ -21,6 +21,7 @@
     "@react-pdf/renderer": "^2.0.21",
     "cors": "^2.8.5",
     "express": "^4.17.2",
+    "i18next": "^23.10.0",
     "react": "^17.0.2",
     "react-dom": "^18.2.0",
     "react-dom-server": "0.0.5",

@@ -28,23 +28,23 @@ export interface PDFProps {
 
 
 
-export function renderPDF(data: TemplateData, templateName: String) {
+export function renderPDF(data: TemplateData, templateName: String, lang:String) {
    if(templateName == 'physician') {
-        return ReactPDF.renderToStream(<Document><Page size="A4"><Html>{physician({data})}</Html></Page></Document>);
+        return ReactPDF.renderToStream(<Document><Page size="A4"><Html>{physician({data}, lang)}</Html></Page></Document>);
     } else {
-        return ReactPDF.renderToStream(<Document><Page size="A4"><Html>{patient({data})}</Html></Page></Document>);
+        return ReactPDF.renderToStream(<Document><Page size="A4"><Html>{patient({data}, lang)}</Html></Page></Document>);
     }
 
 
 
 }
 
-export function renderHtml (data: TemplateData, templateName: String) {
-    console.log("-----------------------------------------" + templateName);
+export function renderHtml (data: TemplateData, templateName: String, lang:String) {
+    console.log("-----------------------------------------" + templateName + ":" + lang);
     if(templateName == 'Physician') {
-        return physician({data});
+        return physician({data}, lang);
     } else {
-        return patient({data});
+        return patient({data}, lang);
     }
 
 };

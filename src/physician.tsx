@@ -2,8 +2,9 @@ import React from "react";
 import TableComponent from "./tablecomp";
 import {PDFProps} from "./sample";
 import ReactDOMServer from 'react-dom/server';
+import i18next from "./i18n"
 
-const physician = ({ data }: PDFProps) => { // @ts-ignore
+const physician = ({ data }: PDFProps, lang:String) => { // @ts-ignore
     // @ts-ignore
     console.log("***"+JSON.stringify(data));
     return `<html>
@@ -24,22 +25,22 @@ const physician = ({ data }: PDFProps) => { // @ts-ignore
    <body>
    
    <form>
-    <h1>B-CELL CLONALITY (ID) REPORT</h1>
+    <h1>${i18next.t( 'BCELL_CLON_REP')}</h1>
     <div>
-    <label>PATIENT NAME: </label>
+    <label>${i18next.t( lang + ':PATIENT_NAME')}</label>
     <span id="patientName" contenteditable="true" class="editable">${data.patientName}</span>
     </div>
     
     <div>
-    <label>PATIENT EMAIL: </label>
+    <label>${i18next.t( lang + ':PATIENT_EMAIL')}: </label>
     <span id="patientEmail" contenteditable="true" class="editable">${data.patientEmail}</span>
     </div>
     <div>
-    <label>GENDER: </label>
+    <label>${i18next.t( lang + ':GENDER')}: </label>
     <span id="gender">${data.gender}</span>    
     </div>
     <div>
-    <label>ORDERING PHYSICIAN: </label>
+    <label>${i18next.t( 'ORDERING_PHYSICIAN')}: </label>
     <span id="orderingPhysician" contenteditable="true" class="editable">${data.orderingPhysician}</span>
     </div>
     <div>
