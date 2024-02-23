@@ -21,20 +21,20 @@ Using the default template, the JSON would look like this:
 
 ```
 {
-	"companyName": "Google",
-	"companyPhone": "999-999-12345",
-	"companyEmail": "test@dummy.com",
-	"receiptNumber": "12345",
-	"datePaid": "9/10/2024",
-	"paymentMethod": "Visa",
-	"amount": "99",
-    "details":"These are the purcase details",
+    "patientName": "John Steve",
+    "gender": "Male",
+    "patientEmail": "john@gmail.com",
+    "orderingPhysician": "North Jose",
+    "dateOfBirth": "11/11/2000",
+    "specimenType": "Blood",
+    "collectionDate": "11/1/2021",
     "rows" :[
-        { "id": "1", "name": "Bat", "count": "2" },
-        { "id": "2", "name": "Ball", "count": "6" },
-        { "id": "3", "name": "Pads", "count": "4" }
-    ]
+        {"id":"1", "icdCodes":"C95.01", "diseaseState":"CLL"},
+        {"id":"2", "icdCodes":"C65.01", "diseaseState":"ALL"},
+        {"id":"3", "icdCodes":"C85.01","diseaseState":"CTCL"}        
+        ]
 }
+
 ```
 
 There are 4 request TWO POST and TWO GET to return HTML  PDF

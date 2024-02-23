@@ -4,14 +4,18 @@ import {renderStaticHtml, renderStaticPDF} from "./reactpdfhtmlstatic";
 
 
 const app = express();
+const cors = require('cors')
 app.use(express.json());
-const port = 3000;
+app.use(cors());
+const port = 3090;
+
 
 /**
  * Renders dynamic HTML
  */
 app.post("/renderhtml", (req, res) => {
-    const result = renderHtml(req.body, req.get('templateName'));
+    let templatename = req.query.templateName.toString();
+    const result = renderHtml(req.body,templatename);
     res.send(result);
 });
 
@@ -19,10 +23,13 @@ app.post("/renderhtml", (req, res) => {
  * Renders dynamic PDF
  */
 app.post("/renderpdf", async (req, res) => {
-    const result = await renderPDF(req.body,  req.get('templateName'));
+
+    const result = await renderPDF(req.body,  'patient');
 
     // Setting up the response headers
     res.setHeader("Content-Type", "application/pdf");
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
     //res.setHeader("Content-Disposition", `attachment; filename=export.pdf`);
 
     // Streaming our resulting pdf back to the user

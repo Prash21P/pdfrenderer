@@ -6,7 +6,7 @@ const TableComponent = ({data}) => {
     const rows = data.map(item => Object.values(item));
 
     return (
-        <table>
+        <table id="table" border="2">
             <thead>
             <tr>
                 {headers.map(header => <th key={header}>{header}</th>)}
