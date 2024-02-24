@@ -73,12 +73,17 @@ const patient = ({ data }: PDFProps, lang:String) => {
    .margin15 {
    margin: 15px;
    }
-   .save-css{
+  .save-css{
     background-color: rgb(166, 166, 241);
-    color:black; 
-    font-weight:500;
+    color:black;
+    height: 5%;
+    width: 10%;
+    padding: 5px;
+    border-radius: 8px;
+    border-color: transparent;
+    font-weight: 600;
+    cursor:pointer;    
    }
-   
     </style>
     <!-- <script type="text/javascript" src="http://localhost:3090/patientscript.js";></script>-->
    <script>   
@@ -153,6 +158,7 @@ const patient = ({ data }: PDFProps, lang:String) => {
              let button = document.createElement("input");
              button.type = 'submit';             
              button.value = 'Edit PDF';
+             button.className = "save-css"
              myWindow.document.body.appendChild(button); 
              
                           
@@ -331,6 +337,7 @@ const patient = ({ data }: PDFProps, lang:String) => {
                 </div>
                 
             </div>
+            <br/>
             <div class="row">
                 <div class="col">
             <input type="button" value="Save" onclick="save('${lang}'.toString())" class="save-css" > 

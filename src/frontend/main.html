@@ -47,16 +47,25 @@
   <div class="container">
     <div class="mt-4 p-5 text-white rounded" style="background-color: rgb(166, 166, 241);">
       <label style="color:black; font-weight:500">Template:</label>
-      <select id="template" style="width:20%">
-        <option value="Patient" selected>Patient</option>
-        <option value="Physician">Physician</option>
+      <select id="template" style="width:10%">
+        <option value="Patient">Patient</option>
+        <option value="Physician" selected>Physician</option>
       </select>
-      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
       <label style="color:black; font-weight:500">Language:</label>
-      <select id="language" style="width:20%">
+      <select id="language" style="width:10%">
         <option value="en" selected>English</option>
         <option value="de">German</option>
       </select>
+
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;
+      
+      <label style="color:black; font-weight:500">Report Type:</label>
+      <select id="reportType" style="width:15%">
+        <option value="Clonality" selected>Clonality</option>
+        <option value="MRD">MRD/Tracking</option>
+      </select>
+
       <br/> <br/> <br/>
       <label style="color:black; font-weight:500">JSON Data:</label>
       <textarea class="form-control" rows="10" id="jsonData" >
