@@ -45,12 +45,12 @@ const patient = ({ data }: PDFProps, lang:String) => {
       
     }
  
-    tr > td:first-child {
+  /*  tr > td:first-child {
     border-left: none;
     }
   tr > td:last-child {
     border-right: none;
-  }
+  }*/
   .table-field-header{
      text-transform: uppercase;
      font-size: 8pt;
@@ -67,9 +67,7 @@ const patient = ({ data }: PDFProps, lang:String) => {
      padding-left: 10px;
      
     }
-    .container {
-      margin:15px;
-    }
+   
    .margin15 {
    margin: 15px;
    }
@@ -92,8 +90,9 @@ const patient = ({ data }: PDFProps, lang:String) => {
         obj["icdCode"]=document.getElementById("icdCode").innerHTML;
         obj["diseaseState"]=document.getElementById("diseaseState").innerHTML;
         obj["result"]=document.getElementById("result").innerHTML;
+        obj["medicalRecord"]=document.getElementById("medicalRecord").innerHTML;
         
-        
+       
         
         let arr= [];
         let mytable = document.getElementById('table');
@@ -285,12 +284,13 @@ const patient = ({ data }: PDFProps, lang:String) => {
             <div class="row margin-top">
                 <div class="col open-sans">
                  <h4 class="backgroundColor">ASSAY DESCRIPTION</h4>
-                    <p>
-                    The clonoSEQ® Assay is an in vitro diagnostic that uses multiplex polymerase chain reaction (PCR) and next-generation sequencing (NGS) to
-                    identify and quantify rearranged IgH (VDJ), IgH (DJ), IgK and IgL receptor gene sequences, as well as translocated BCL1/IgH (J) and BCL2/IgH (J)
-                    sequences in DNA extracted from bone marrow from patients with B-cell acute lymphoblastic leukemia (ALL) or multiple myeloma (MM), and
-                    blood or bone marrow from patients with chronic lymphocytic leukemia (CLL)
-                    </p>  
+                    <div class="open-sans">
+                    The clonoSEQ Assay B-cell Reagent Set is an in vitro diagnostic that identifies and quantifies rearranged B-cell receptor gene sequences in DNA extracted from blood and bone marrow.
+                    It is a manual test that determines measurable/minimal residual disease (MRD) and monitors changes 
+                    in disease burden during and after treatment in B-cell malignancies. The test is indicated for use 
+                    by qualified healthcare professionals for clinical decision-making and in conjunction with other
+                     clinicopathological features.
+                    </div>  
                  </div>                
             </div>
             <div class="row margin-top">
@@ -308,14 +308,14 @@ const patient = ({ data }: PDFProps, lang:String) => {
                 <div class="row margin-top">
                     <div class="col open-sans">
                         <h4 class="backgroundColor">CRITERIA FOR DEFINING "DOMINANT" SEQUENCES </h4>
-                        <p>
+                        <div class="open-sans"> 
                         <ul>
                             <li>The sequence must comprise at least 3% of all like sequences (IGH-involved, IGK, and IGL are considered independently).</li>
                             <li>The sequence must comprise at least 0.2% of the total nucleated cells in the sample.</li>
                             <li>The sequence must be discontinuously distributed (≤5 sequences in the next decade of sequences when ranked by frequency).</li>
                             <li>The sequence must be carried by at least 40 estimated genome equivalents in the analyzed sample.</li>
                         </ul>
-                        </p>
+                        </div>
                     </div>
                 </div>
                 
