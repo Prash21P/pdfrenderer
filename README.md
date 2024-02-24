@@ -21,19 +21,26 @@ Using the default template, the JSON would look like this:
 
 ```
 {
-    "patientName": "John Steve",
+    "patientName": "John Steve", 
     "gender": "Male",
     "patientEmail": "john@gmail.com",
     "orderingPhysician": "North Jose",
     "dateOfBirth": "11/11/2000",
     "specimenType": "Blood",
     "collectionDate": "11/1/2021",
-    "rows" :[
-        {"id":"1", "icdCodes":"C95.01", "diseaseState":"CLL"},
-        {"id":"2", "icdCodes":"C65.01", "diseaseState":"ALL"},
-        {"id":"3", "icdCodes":"C85.01","diseaseState":"CTCL"}        
-        ]
-}
+    "medicalrecord":"25345",
+    "orderNumber" : "423543",
+    "sampleId":"SP-111234",
+    "icdCodes":"C91.5 Multiple myeloma not having achieved remission",
+    "diseaseState":"CTCL",
+    "institution":"Tata Hospital",
+    "result":"Dominant Sequence identified",
+    "rows":[
+        {"collectionDate":"11/1/2021","sampleId":"SP-111234","specimenType":"Blood",
+        "frequencyPerTotalNucleatedCells":"80.4%",
+        "TotalCellsContainingSequence":"57120" }
+    	]   
+	}
 
 ```
 
