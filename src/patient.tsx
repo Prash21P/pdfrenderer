@@ -10,28 +10,20 @@ const patient = ({ data }: PDFProps) => {
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    
+       
     <style>
-        .open-sans {
-        font-family: Tahoma, sans-serif;
+        .open-sans {        
         font-weight: normal;      
         }
         body{
         margin: 0; padding: 0;
-        font-family:   Tahoma, sans-serif;
         color: black;
         }
         .gotham-bold{
-             font-family: GothamBold,  Tahoma, sans-serif;
-             font-weight: bold;
+            font-weight: bold;
         }
         .open-sans-bold {
-            font-family: OpenSansBold,  Tahoma, sans-serif;
-            font-weight: bold;
+             font-weight: bold;
             }
     .page-header {
         width: 100%;
@@ -70,6 +62,9 @@ const patient = ({ data }: PDFProps) => {
      background-color: rgb(166, 166, 241);
      padding-left: 10px;
      
+    }
+    .container {
+      margin:15px;
     }
  
     </style>
@@ -129,12 +124,12 @@ const patient = ({ data }: PDFProps) => {
             .then(response => {
                 
              let myWindow= window.open("","_blank");
-             myWindow.document.write("<h3> PDF Render </h3>");  
-             let iframe = document.createElement("iframe");
+             myWindow.document.write("<html><body>");
+             let iframe = myWindow.document.createElement("iframe");
              iframe.src = URL.createObjectURL(response);
              iframe.name = "PDF Render";
-             iframe.width = "500";
-             iframe.height = "400";
+             iframe.width = "100%";
+             iframe.height = "90%";
              myWindow.document.body.appendChild(iframe);
              myWindow.document.write("<br/><br/>")
                        
@@ -167,7 +162,7 @@ const patient = ({ data }: PDFProps) => {
                             PATIENT NAME
                             </div>
                             <div id="patientName" contenteditable="true" class="table-field-value">
-                            John Josh
+                            ${data.patientName}
                             </div>
                         </td>
                         <td>
@@ -175,7 +170,7 @@ const patient = ({ data }: PDFProps) => {
                             PATIENT EMAIL
                             </div>
                             <div id="patientEmail" contenteditable="true" class="table-field-value">
-                             john@gmail.com
+                             ${data.patientEmail}
                             </div>
                         </td>
                         <td>
@@ -183,7 +178,7 @@ const patient = ({ data }: PDFProps) => {
                              DATE OF BIRTH
                             </div>
                             <div id="dateOfBirth" contenteditable="true" class="table-field-value">
-                            11/11/2000
+                            ${data.dateOfBirth}
                             </div>
                         </td>
                         <td>
@@ -191,7 +186,7 @@ const patient = ({ data }: PDFProps) => {
                              GENDER
                             </div>
                             <div id="gender"  contenteditable="true" class="table-field-value">
-                            MALE
+                            ${data.gender}
                             </div>
                         </td>
                         <td>
@@ -199,7 +194,7 @@ const patient = ({ data }: PDFProps) => {
                             MEDICAL RECORD
                             </div>
                             <div id="medicalRecord" contenteditable="true" class="table-field-value">
-                            25345
+                            ${data.medicalRecord}
                             </div>
                         </td>
                        
@@ -211,7 +206,7 @@ const patient = ({ data }: PDFProps) => {
                             SPECIMEN TYPE
                             </div>
                             <div id="specimenType" contenteditable="true" class="table-field-value">
-                            BONE MARROW
+                            ${data.specimenType}
                             </div>
                         </td>
  
@@ -220,7 +215,7 @@ const patient = ({ data }: PDFProps) => {
                             COLLECTION DATE
                             </div>
                             <div id="collectionDate" contenteditable="true" class="table-field-value">
-                            1/1/2023
+                            ${data.collectionDate}
                             </div>
                         </td>
  
@@ -229,7 +224,7 @@ const patient = ({ data }: PDFProps) => {
                             SAMPLE ID
                             </div>
                             <div id="sampleId" contenteditable="true" class="table-field-value">
-                            SP-25345
+                            ${data.sampleId}
                             </div>
                         </td>
  
@@ -238,7 +233,7 @@ const patient = ({ data }: PDFProps) => {
                             ORDER NUMBER
                             </div>
                             <div id="orderNumber" contenteditable="true" class="table-field-value">
-                            D-355435
+                            ${data.orderNumber}
                             </div>
                         </td>
                     </tr>
@@ -248,7 +243,7 @@ const patient = ({ data }: PDFProps) => {
                                 ICD CODE
                             </div>
                             <div id="icdCode" contenteditable="true" class="table-field-value">
-                                C98.0 Multiple myeloma not having achieved remission                              
+                               ${data.icdCode}                             
                             </div>
                         </td>
                         <td colspan="3">
@@ -256,7 +251,7 @@ const patient = ({ data }: PDFProps) => {
                                 DISEASE STATE
                             </div>
                             <div id="diseaseState" contenteditable="true" class="table-field-value">
-                                NH-CTCL
+                                ${data.diseaseState}
                             </div>
                         </td>
                     </tr>
@@ -266,7 +261,7 @@ const patient = ({ data }: PDFProps) => {
                             ORDER PHYSICIAN
                             </div>
                             <div id="orderingPhysician" contenteditable="true" class="table-field-value">
-                            PETER SAMUEL
+                            ${data.orderingPhysician}
                             </div>
                         </td>
                         <td colspan="3">
@@ -274,7 +269,7 @@ const patient = ({ data }: PDFProps) => {
                             INSTITUTION
                             </div>
                             <div id="institution" contenteditable="true" class="table-field-value">
-                            PUNE HOSPITAL
+                            ${data.institution}
                             </div>
                         </td>
                     </tr>
@@ -294,9 +289,9 @@ const patient = ({ data }: PDFProps) => {
             <div class="row margin-top">
                 <div class="col open-sans">
                  <h4 class="backgroundColor ">RESULT</h4>
-                    <div id="result"> Dominant Sequence identified extracted from bone marrow from patients with B-cell acute lymphoblastic leukemia (ALL) or multiple myeloma (MM), and blood or bone marrow from patients with chronic lymphocytic leukemia (CLL)</div>
-                    
-                 </div>                
+                   <div id="result"> 
+                    ${data.result}
+                   </div>                
             </div>
                 <div class="row">
                 <div class="col open-sans">
