@@ -36,7 +36,7 @@ export interface PDFProps {
 
 
 export function renderPDF(data: TemplateData, templateName: String, lang:String) {
-   if(templateName == 'physician') {
+   if(templateName == 'Physician') {
         return ReactPDF.renderToStream(<Document><Page size="A4"><Html>{physician({data}, lang)}</Html></Page></Document>);
     } else {
         return ReactPDF.renderToStream(<Document><Page size="A4"><Html>{patient({data}, lang)}</Html></Page></Document>);

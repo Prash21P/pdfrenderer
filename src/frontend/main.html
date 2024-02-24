@@ -45,27 +45,27 @@
 </script>
 <form>
   <div class="container">
-    <div class="mt-4 p-5 bg-secondary text-white rounded">
-      <label>Template</label>
-      <select id="template">
+    <div class="mt-4 p-5 text-white rounded" style="background-color: rgb(166, 166, 241);">
+      <label style="color:black; font-weight:500">Template:</label>
+      <select id="template" style="width:20%">
         <option value="Patient" selected>Patient</option>
         <option value="Physician">Physician</option>
       </select>
-      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-      <label>Language</label>
-      <select id="language">
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <label style="color:black; font-weight:500">Language:</label>
+      <select id="language" style="width:20%">
         <option value="en" selected>English</option>
         <option value="de">German</option>
       </select>
       <br/> <br/> <br/>
-      <label>JSON Data:</label>
+      <label style="color:black; font-weight:500">JSON Data:</label>
       <textarea class="form-control" rows="10" id="jsonData" >
                     </textarea>
     </div>
     <br/>
     <div id="error"></div>
     <div class="col text-center mt-10">
-      <input type="button" onclick="m1()" value="Render Report" class="btn btn-secondary align-center">
+      <input type="button" onclick="m1()" value="Render Report" class="btn align-center" style="background-color: rgb(166, 166, 241);color:black; font-weight:500">
     </div>
   </div>
 </form>

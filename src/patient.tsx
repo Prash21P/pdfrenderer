@@ -4,8 +4,10 @@ import {PDFProps} from "./sample";
 import ReactDOMServer from 'react-dom/server';
 import i18next from "./i18n"
 
+var l;
 const patient = ({ data }: PDFProps, lang:String) => {
-
+console.log("+++"+lang);
+l = lang;
     return `
     <html>
     <head>
@@ -71,12 +73,19 @@ const patient = ({ data }: PDFProps, lang:String) => {
    .margin15 {
    margin: 15px;
    }
+   .save-css{
+    background-color: rgb(166, 166, 241);
+    color:black; 
+    font-weight:500;
+   }
    
     </style>
     <!-- <script type="text/javascript" src="http://localhost:3090/patientscript.js";></script>-->
    <script>   
-    function save() {   
-        let obj=new Object();       
+    function save(lang) {   
+        
+        let obj=new Object();    
+        
         obj["patientName"] = document.getElementById("patientName").innerHTML;
         obj["patientEmail"] = document.getElementById("patientEmail").innerHTML;
         obj["orderingPhysician"] = document.getElementById("orderingPhysician").innerHTML;
@@ -115,8 +124,9 @@ const patient = ({ data }: PDFProps, lang:String) => {
            arr.push(tableRow);     
         }
         obj["rows"] = arr;        
+       
         
-        fetch("http://localhost:3090/renderpdf", {
+        fetch("http://localhost:3090/renderpdf?templateName=Patient&locale="+lang, {
             method: "POST",
             mode: "cors",
             headers: {
@@ -143,7 +153,8 @@ const patient = ({ data }: PDFProps, lang:String) => {
              let button = document.createElement("input");
              button.type = 'submit';             
              button.value = 'Edit PDF';
-             myWindow.document.body.appendChild(button);                              
+             myWindow.document.body.appendChild(button); 
+             
                           
             })
             .catch(error => {
@@ -181,7 +192,7 @@ const patient = ({ data }: PDFProps, lang:String) => {
                         </td>
                         <td>
                             <div class="table-field-header">
-                             DATE OF BIRTH
+                            ${i18next.t( lang + ':DATE_OF_BIRTH')}
                             </div>
                             <div id="dateOfBirth" contenteditable="true" class="table-field-value">
                             ${data.dateOfBirth}
@@ -189,7 +200,7 @@ const patient = ({ data }: PDFProps, lang:String) => {
                         </td>
                         <td>
                             <div class="table-field-header">
-                             GENDER
+                            ${i18next.t( lang + ':GENDER')}
                             </div>
                             <div id="gender"  contenteditable="true" class="table-field-value">
                             ${data.gender}
@@ -197,7 +208,7 @@ const patient = ({ data }: PDFProps, lang:String) => {
                         </td>
                         <td>
                             <div class="table-field-header">
-                            MEDICAL RECORD
+                            ${i18next.t( lang + ':MEDICAL_RECORD')}
                             </div>
                             <div id="medicalRecord" contenteditable="true" class="table-field-value">
                             ${data.medicalRecord}
@@ -209,7 +220,7 @@ const patient = ({ data }: PDFProps, lang:String) => {
                        
                         <td colspan="2">
                             <div class="table-field-header">
-                            SPECIMEN TYPE
+                            ${i18next.t( lang + ':SPECIMEN_TYPE')}
                             </div>
                             <div id="specimenType" contenteditable="true" class="table-field-value">
                             ${data.specimenType}
@@ -218,7 +229,7 @@ const patient = ({ data }: PDFProps, lang:String) => {
  
                         <td>
                             <div class="table-field-header">
-                            COLLECTION DATE
+                            ${i18next.t( lang + ':COLLECTION_DATE')}
                             </div>
                             <div id="collectionDate" contenteditable="true" class="table-field-value">
                             ${data.collectionDate}
@@ -227,7 +238,7 @@ const patient = ({ data }: PDFProps, lang:String) => {
  
                         <td>
                             <div class="table-field-header">
-                            SAMPLE ID
+                            ${i18next.t( lang + ':SAMPLE_ID')}
                             </div>
                             <div id="sampleId" contenteditable="true" class="table-field-value">
                             ${data.sampleId}
@@ -236,7 +247,7 @@ const patient = ({ data }: PDFProps, lang:String) => {
  
                         <td>
                             <div class="table-field-header">
-                            ORDER NUMBER
+                            ${i18next.t( lang + ':ORDER_NUMBER')}
                             </div>
                             <div id="orderNumber" contenteditable="true" class="table-field-value">
                             ${data.orderNumber}
@@ -246,7 +257,7 @@ const patient = ({ data }: PDFProps, lang:String) => {
                     <tr>
                         <td colspan="3">
                             <div class="table-field-header">
-                                ICD CODE
+                            ${i18next.t( lang + ':ICD_CODE')}
                             </div>
                             <div id="icdCode" contenteditable="true" class="table-field-value">
                                ${data.icdCode}                             
@@ -254,7 +265,7 @@ const patient = ({ data }: PDFProps, lang:String) => {
                         </td>
                         <td colspan="3">
                             <div class="table-field-header">
-                                DISEASE STATE
+                            ${i18next.t( lang + ':DISEASE_STATE')}
                             </div>
                             <div id="diseaseState" contenteditable="true" class="table-field-value">
                                 ${data.diseaseState}
@@ -264,7 +275,7 @@ const patient = ({ data }: PDFProps, lang:String) => {
                     <tr>
                         <td colspan="3">
                             <div class="table-field-header">
-                            ORDER PHYSICIAN
+                            ${i18next.t( lang + ':ORDER_PHYSICIAN')}
                             </div>
                             <div id="orderingPhysician" contenteditable="true" class="table-field-value">
                             ${data.orderingPhysician}
@@ -272,7 +283,7 @@ const patient = ({ data }: PDFProps, lang:String) => {
                         </td>
                         <td colspan="3">
                             <div class="table-field-header">
-                            INSTITUTION
+                            ${i18next.t( lang + ':INSTITUTION')}
                             </div>
                             <div id="institution" contenteditable="true" class="table-field-value">
                             ${data.institution}
@@ -281,21 +292,10 @@ const patient = ({ data }: PDFProps, lang:String) => {
                     </tr>
                 </table>
               </div>
+           
             <div class="row margin-top">
                 <div class="col open-sans">
-                 <h4 class="backgroundColor">ASSAY DESCRIPTION</h4>
-                    <div class="open-sans">
-                    The clonoSEQ Assay B-cell Reagent Set is an in vitro diagnostic that identifies and quantifies rearranged B-cell receptor gene sequences in DNA extracted from blood and bone marrow.
-                    It is a manual test that determines measurable/minimal residual disease (MRD) and monitors changes 
-                    in disease burden during and after treatment in B-cell malignancies. The test is indicated for use 
-                    by qualified healthcare professionals for clinical decision-making and in conjunction with other
-                     clinicopathological features.
-                    </div>  
-                 </div>                
-            </div>
-            <div class="row margin-top">
-                <div class="col open-sans">
-                 <h4 class="backgroundColor ">RESULT</h4>
+                 <h4 class="backgroundColor ">${i18next.t( lang + ':RESULT')}</h4>
                    <div id="result"> 
                     ${data.result}
                    </div>                
@@ -305,24 +305,12 @@ const patient = ({ data }: PDFProps, lang:String) => {
                  ${ReactDOMServer.renderToString(<TableComponent data={data.rows}/>)}
                 </div>
                 </div>
-                <div class="row margin-top">
-                    <div class="col open-sans">
-                        <h4 class="backgroundColor">CRITERIA FOR DEFINING "DOMINANT" SEQUENCES </h4>
-                        <div class="open-sans"> 
-                        <ul>
-                            <li>The sequence must comprise at least 3% of all like sequences (IGH-involved, IGK, and IGL are considered independently).</li>
-                            <li>The sequence must comprise at least 0.2% of the total nucleated cells in the sample.</li>
-                            <li>The sequence must be discontinuously distributed (≤5 sequences in the next decade of sequences when ranked by frequency).</li>
-                            <li>The sequence must be carried by at least 40 estimated genome equivalents in the analyzed sample.</li>
-                        </ul>
-                        </div>
-                    </div>
-                </div>
+                
                 
             </div>
             <div class="row">
                 <div class="col">
-            <input type="button" value="Save" onclick="save()" > 
+            <input type="button" value="Save" onclick="save('${lang}'.toString())" class="save-css align-center" > 
                 </div>   
             </div>
           </div>

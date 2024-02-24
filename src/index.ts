@@ -26,7 +26,8 @@ app.post("/renderhtml", (req, res) => {
  */
 app.post("/renderpdf", async (req, res) => {
 
-    let templatename = req.query.templateName as String;
+    let templatename = req.query.templateName.toString();
+
     let lang = req.query.locale as String;
     if(lang == null || lang == 'undefined') lang = 'en';
     const result = await renderPDF(req.body,  templatename, lang);
