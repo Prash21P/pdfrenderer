@@ -14,9 +14,10 @@
       let data=JSON.parse(document.getElementById("jsonData").value);
       let e = document.getElementById("template");
       let selected = e.options[e.selectedIndex].value;
+      let lang = document.getElementById("language");
+      let languageSelected = lang.options[lang.selectedIndex].value;
 
-      console.log("+++"+selected);
-      fetch("http://localhost:3090/renderhtml?templateName="+selected, {
+      fetch("http://localhost:3090/renderhtml?templateName="+selected+"&locale="+languageSelected, {
         method: "POST",
         mode: "cors",
         headers: {
@@ -50,9 +51,15 @@
         <option value="Patient" selected>Patient</option>
         <option value="Physician">Physician</option>
       </select>
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <label>Language</label>
+      <select id="language">
+        <option value="en" selected>English</option>
+        <option value="de">German</option>
+      </select>
       <br/> <br/> <br/>
       <label>JSON Data:</label>
-      <textarea class="form-control" rows="10" id="jsonData" >{  }
+      <textarea class="form-control" rows="10" id="jsonData" >
                     </textarea>
     </div>
     <br/>

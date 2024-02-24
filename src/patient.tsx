@@ -14,7 +14,8 @@ const patient = ({ data }: PDFProps, lang:String) => {
        
     <style>
         .open-sans {        
-        font-weight: normal;      
+        font-weight: normal;  
+        font-family: "Times-Roman";     
         }
         body{
         margin: 0; padding: 0;
@@ -22,9 +23,11 @@ const patient = ({ data }: PDFProps, lang:String) => {
         }
         .gotham-bold{
             font-weight: bold;
+            font-family: "Times-Roman"; 
         }
         .open-sans-bold {
-             font-weight: bold;
+         font-weight: bold;
+         font-family: "Times-Roman"; 
             }
     .page-header {
         width: 100%;
@@ -34,7 +37,7 @@ const patient = ({ data }: PDFProps, lang:String) => {
             width: 100%;
             border: none;            
     }
-    td {
+    td,th {
       border: 1px #B0B1B3 solid;
       padding: 5px;
       padding-left: 8px; 
@@ -48,10 +51,10 @@ const patient = ({ data }: PDFProps, lang:String) => {
   tr > td:last-child {
     border-right: none;
   }
-    .table-field-header{
-    text-transform: uppercase;
+  .table-field-header{
+     text-transform: uppercase;
      font-size: 8pt;
-     }
+   }
     .table-field-value {
         font-weight: bold;
         font-size: 10pt;    
@@ -67,7 +70,10 @@ const patient = ({ data }: PDFProps, lang:String) => {
     .container {
       margin:15px;
     }
- 
+   .margin15 {
+   margin: 15px;
+   }
+   
     </style>
     <!-- <script type="text/javascript" src="http://localhost:3090/patientscript.js";></script>-->
    <script>   
@@ -149,7 +155,7 @@ const patient = ({ data }: PDFProps, lang:String) => {
     </head>
     <body>
         <div class="container">
-           
+            <div class="margin15">
             <div class="row">
                 <h2 class="page-header">${i18next.t( lang + ':BCELL_CLON_REP')}</h2>
                 <hr/>
@@ -319,7 +325,7 @@ const patient = ({ data }: PDFProps, lang:String) => {
             <input type="button" value="Save" onclick="save()" > 
                 </div>   
             </div>
-         
+          </div>
          </div>
         </form>
     </body>
