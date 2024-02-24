@@ -2,8 +2,9 @@ import React from "react";
 import TableComponent from "./tablecomp";
 import {PDFProps} from "./sample";
 import ReactDOMServer from 'react-dom/server';
+import i18next from "./i18n"
 
-const patient = ({ data }: PDFProps) => {
+const patient = ({ data }: PDFProps, lang:String) => {
 
     return `
     <html>
@@ -150,7 +151,7 @@ const patient = ({ data }: PDFProps) => {
         <div class="container">
            
             <div class="row">
-                <h2 class="page-header">B-CELL CLONALITY (ID) REPORT</h2>
+                <h2 class="page-header">${i18next.t( lang + ':BCELL_CLON_REP')}</h2>
                 <hr/>
                
               <div class="col" style="background-color:lavender;">
@@ -159,7 +160,7 @@ const patient = ({ data }: PDFProps) => {
                     <tr>
                         <td>
                             <div class="table-field-header">
-                            PATIENT NAME
+                            ${i18next.t( lang + ':PATIENT_NAME')}
                             </div>
                             <div id="patientName" contenteditable="true" class="table-field-value">
                             ${data.patientName}
@@ -167,7 +168,7 @@ const patient = ({ data }: PDFProps) => {
                         </td>
                         <td>
                             <div class="table-field-header">
-                            PATIENT EMAIL
+                            ${i18next.t( lang + ':PATIENT_EMAIL')}
                             </div>
                             <div id="patientEmail" contenteditable="true" class="table-field-value">
                              ${data.patientEmail}
