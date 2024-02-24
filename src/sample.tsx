@@ -17,7 +17,14 @@ export type TemplateData = {
     orderingPhysician: string,
     dateOfBirth: string,
     specimenType: string,
+    medicalRecord:string,
+    orderNumber:string,
+    sampleId:string,
+    icdCode:string,
+    diseaseState:string,
+    institution:string,
     collectionDate: string,
+    result:string,
     rows : object[]
 };
 
